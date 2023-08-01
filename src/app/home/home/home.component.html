@@ -1,0 +1,38 @@
+
+<div class="banner">
+  <div class="wrapper">
+    <div class="context">
+      <h1>conduit</h1>
+      <p>A place to share your Angular knowledge.</p>
+    </div>
+  </div>
+</div>
+<div class="wrapper container">
+  <div class="home-header">
+    <div class="feed" >
+      <a routerLink="your"
+        [routerLinkActive]="'active'"
+        ariaCurrentWhenActive="page">
+        Your Feed
+      </a>
+      
+      <a routerLink="global" 
+        [routerLinkActive]="'active'"
+        ariaCurrentWhenActive="page">
+        Global feed
+      </a>
+  
+      <a  
+        class="active"
+        ng-href="#"
+        >
+       tag
+      </a>
+      <hr>
+    </div>
+  </div>
+  <div class="router">
+    <router-outlet ></router-outlet>
+  </div>
+  
+</div>

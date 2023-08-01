@@ -1,0 +1,39 @@
+<div class="wrapper">
+  <div class="content">
+    <div class="logo">conduit</div>
+    <div class="nav">
+      <!--  routerLink="./home/home" 
+        (click)="gotoPage()"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page" -->
+      <a routerLink="home" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a>
+
+      <ng-container>
+        <a routerLink="login" routerLinkActive="active" ariaCurrentWhenActive="page"
+      
+          >Sign in</a
+        >
+        <a routerLink="register" routerLinkActive="active" ariaCurrentWhenActive="page"
+         
+          >Sign up</a
+        >
+      </ng-container>
+      <ng-container>
+        <a
+        
+          >&#9998;New Article
+        </a>
+        <a><i class="fa fa-cog"></i>&nbsp;Settings </a>
+        <a>
+          <span class="smile">&#9786;</span>
+       
+        </a>
+      </ng-container>
+    </div>
+  </div>
+ 
+</div>
+
+<!-- <div class="wrapper"> -->
+  <router-outlet></router-outlet>
+<!-- </div> -->

@@ -1,0 +1,52 @@
+.container{
+  padding: 20px;
+}
+
+.wrapper{
+  a{
+    text-decoration: none;
+    padding: 20px;
+    color: gray;
+  }
+  .active{
+    padding-bottom: 8px;
+    border-bottom: 4px solid #5cb85c;
+  }
+}
+
+.home-header{
+  display: flex;
+  justify-content: space-between;
+
+  .feed{
+    width: 77%;
+    align-self: baseline;
+  }
+}
+
+.router{
+  width: 883px;
+  position: absolute;
+  top: 450px;
+}
+
+.banner{
+  background: #5cb85c;
+ .context{
+    text-align: center;
+    padding: 15px;
+    color: white;
+    
+    h1{
+      text-shadow: 0 1px 3px rgba(0,0,0,.3);
+      font-weight: bold;
+      font-size: 70px;
+      margin: 0;
+    }
+
+    p{
+      font-weight: 300;
+      font-size: 30px;
+    }
+ }
+}

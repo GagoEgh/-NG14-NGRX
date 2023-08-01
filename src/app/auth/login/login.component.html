@@ -1,0 +1,18 @@
+<div class="wrapper">
+  <div class="container">
+    <h1>Sign up</h1>
+
+  
+   <a routerLink="../register">Need an account?</a>
+    <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <input type="email" placeholder="Email" formControlName="email" />
+      <input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <button >Sign up</button>
+    </form>
+  </div>
+</div>
+
