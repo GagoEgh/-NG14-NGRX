@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule]
+    RouterModule],
+  providers: [AuthService]
 
 })
 export class LoginComponent {
@@ -30,7 +32,7 @@ export class LoginComponent {
   }
 
   public onSubmit(): void {
-    console.log('hi')
+
   }
 
 

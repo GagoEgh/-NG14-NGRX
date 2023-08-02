@@ -1,25 +1,35 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import {  FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, EnvironmentInjector, inject } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { Store, select } from '@ngrx/store';
+
+import { registerStart } from '../store/action';
+import { IRequestUser } from '../model/requestUser.interface';
+import { backendErrore } from '../store/selectors';
+
+
 
 @Component({
+  standalone: true,
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['../auth.scss'],
-  standalone:true,
-  imports:[
+  imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule]
+    RouterModule],
+
 })
 export class RegisterComponent {
   registerForm!: FormGroup;
   private fb = inject(FormBuilder);
-
-  constructor(){
-    this.initRegisterForm()
+  private injector = inject(EnvironmentInjector)
+  private store = inject(Store)
+  constructor() {
+    this.initRegisterForm();
   }
+
 
   private initRegisterForm(): void {
     this.registerForm = this.fb.group({
@@ -29,5 +39,28 @@ export class RegisterComponent {
     })
   }
 
-  public onSubmit() {}
+  public onSubmit() {
+    const user = {
+      user: this.registerForm.value
+    }
+
+    this.injector.runInContext(() => {
+      registerStartAction(user)
+    })
+
+    this.store.pipe(select(backendErrore))
+    .subscribe({
+      next:(res)=>{
+        console.log('user',res);
+      
+      }
+    })
+
+  }
+}
+
+
+export const registerStartAction = (user: IRequestUser) => {
+  const store = inject(Store);
+  store.dispatch(registerStart(user))
 }
