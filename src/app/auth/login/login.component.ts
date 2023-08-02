@@ -30,7 +30,7 @@ export class LoginComponent {
   }
 
   public onSubmit(): void {
-
+    console.log('hi')
   }
 
 
