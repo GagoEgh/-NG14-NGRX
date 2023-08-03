@@ -9,4 +9,8 @@ export class AuthService {
   public registerUser(requestUser: IRequestUser) {
     return this.http.post('users', requestUser)
   }
+
+  public loginUser(requestUser: IRequestUser){
+    return this.http.post('users/login', requestUser)
+  }
 }

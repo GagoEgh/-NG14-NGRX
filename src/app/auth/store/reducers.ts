@@ -1,6 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
 import { IAuthState } from '../model/authState.interface';
-import { registerError, registerStart, registerSuccess } from './action';
+import {
+  loginError,
+  loginStart,
+  loginSuccess,
+  registerError,
+  registerStart,
+  registerSuccess
+} from './action';
 
 const authState: IAuthState = {
   isLoad: false,
@@ -11,6 +18,7 @@ const authState: IAuthState = {
 
 export const authReducer = createReducer(
   authState,
+  // ---------REGISTER------------
   on(registerStart, (state: IAuthState) => ({ ...state, isLoad: true })),
   on(registerSuccess, (state: IAuthState, action) => (
     {
@@ -24,7 +32,23 @@ export const authReducer = createReducer(
     ...state,
     isLoad: false,
     logedIn: false,
-    backError:action
-  }))
+    backError: action
+  })),
+  //----------LOGIN--------------
+  on(loginStart, (state: IAuthState) => ({ ...state, isLoad: true })),
+  on(loginSuccess, (state: IAuthState, action) => (
+    {
+      ...state,
+      isLoad: false,
+      logedIn: true,
+      currentUser: action
+    })
+  ),
+  on(loginError, (state: IAuthState, action) => ({
+    ...state,
+    isLoad: false,
+    logedIn: false,
+    backError: action
+  })),
 )
 

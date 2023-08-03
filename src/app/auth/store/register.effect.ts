@@ -21,13 +21,11 @@ export class RegisterEffect {
         return this.authService.registerUser(user)
           .pipe(
             map((response: any) => {
-
               localStorage.setItem('accessToken', response.user.token);
               return registerSuccess(response.user)
             }
             ),
             catchError((error:HttpErrorResponse) => {
-              console.log('ttt________',error.error.errors);
               return of(registerError(error.error.errors))
             })
           )

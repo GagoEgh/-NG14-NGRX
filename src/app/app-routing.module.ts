@@ -1,10 +1,11 @@
 import { NgModule, importProvidersFrom } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
-import { RegisterEffect } from './auth/store/effect';
+import { RegisterEffect } from './auth/store/register.effect';
 import { AuthService } from './auth/auth.service';
 import { StoreModule } from '@ngrx/store';
 import { authReducer } from './auth/store/reducers';
+import { LoginEffect } from './auth/store/login.effect';
 
 const routes: Routes = [
   {
@@ -19,16 +20,18 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadComponent: () => import('./auth/login/login.component').then((c) => c.LoginComponent)
+    loadComponent: () => import('./auth/login/login.component').then((c) => c.LoginComponent),
+    providers: [
+      AuthService,
+      importProvidersFrom(EffectsModule.forFeature([LoginEffect]))
+    ]
   },
   {
     path: 'register',
     loadComponent: () => import('./auth/register/register.component').then(c => c.RegisterComponent),
     providers: [
       AuthService,
-      importProvidersFrom( 
-        
-        EffectsModule.forFeature([RegisterEffect]))
+      importProvidersFrom(EffectsModule.forFeature([RegisterEffect]))
     ]
 
   }

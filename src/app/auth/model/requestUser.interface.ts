@@ -1,10 +1,9 @@
-export interface IRequestUser{
-  user:IUserRegister
+import { IRequestLogin } from "./requestLogin.interface"
+
+export interface IRequestUser {
+  user:IRequestRegister|IRequestLogin
 }
 
-interface IUserRegister{
-  email:string,
-  password:string,
+interface IRequestRegister extends IRequestLogin{
   username:string
 }
-
