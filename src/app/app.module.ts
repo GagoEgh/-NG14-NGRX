@@ -11,8 +11,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home/home.component';
 import { EffectsModule } from '@ngrx/effects';
-
-
+import { authReducer } from './auth/store/reducers';
 
 
 
@@ -29,11 +28,12 @@ import { EffectsModule } from '@ngrx/effects';
       router: routerReducer,
     }),
     StoreModule.forRoot(),
+    StoreModule.forFeature('auth',authReducer),
     StoreDevtoolsModule.instrument({ maxAge: 55, logOnly: !isDevMode() }),
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([]),
     HomeComponent,
-    
+   
   ],
   providers: [
     {

@@ -27,7 +27,7 @@ const routes: Routes = [
     providers: [
       AuthService,
       importProvidersFrom( 
-        StoreModule.forFeature('auth',authReducer),
+        
         EffectsModule.forFeature([RegisterEffect]))
     ]
 

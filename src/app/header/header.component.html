@@ -8,7 +8,7 @@
         ariaCurrentWhenActive="page" -->
       <a routerLink="home" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a>
 
-      <ng-container>
+      <ng-container *ngIf="!(logedIn$|async)">
         <a routerLink="login" routerLinkActive="active" ariaCurrentWhenActive="page"
       
           >Sign in</a
@@ -18,16 +18,10 @@
           >Sign up</a
         >
       </ng-container>
-      <ng-container>
-        <a
-        
-          >&#9998;New Article
-        </a>
+      <ng-container *ngIf="logedIn$|async">
+        <a>&#9998;New Article</a>
         <a><i class="fa fa-cog"></i>&nbsp;Settings </a>
-        <a>
-          <span class="smile">&#9786;</span>
-       
-        </a>
+        <a><span class="smile">&#9786;</span></a>
       </ng-container>
     </div>
   </div>
