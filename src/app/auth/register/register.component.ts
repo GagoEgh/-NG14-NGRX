@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import { IBackError } from 'src/app/shared/model/backendErrore.interface';
 import { LoadingComponent } from 'src/app/shared/loading/loading.component';
 import { backendError } from '../../shared/helpers/backendErrore.select';
-import { registerStartAction } from '../helpers/registerStart.action';
+import { registerStartAction } from '../helpers/registerStart.dispatch';
 import { isLoadSelector } from '../../shared/helpers/isLoad.selector';
 
 

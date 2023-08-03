@@ -12,6 +12,8 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home/home.component';
 import { EffectsModule } from '@ngrx/effects';
 import { authReducer } from './auth/store/reducers';
+import { CurrentUserEffect } from './auth/store/currentUser.effect';
+import { LoadingComponent } from './shared/loading/loading.component';
 
 
 
@@ -32,8 +34,9 @@ import { authReducer } from './auth/store/reducers';
     StoreDevtoolsModule.instrument({ maxAge: 55, logOnly: !isDevMode() }),
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([]),
+    EffectsModule.forFeature([CurrentUserEffect]),
     HomeComponent,
-   
+    LoadingComponent
   ],
   providers: [
     {

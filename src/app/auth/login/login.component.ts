@@ -10,7 +10,7 @@ import { BackendErrorComponent } from 'src/app/shared/backend-error/backend-erro
 import { isLoadSelector } from 'src/app/shared/helpers/isLoad.selector';
 import { IBackError } from 'src/app/shared/model/backendErrore.interface';
 import { backendError } from 'src/app/shared/helpers/backendErrore.select';
-import { loginStartAction } from '../helpers/loginStart.action';
+import { loginStartAction } from '../helpers/loginStart.dispatch';
 
 @Component({
   selector: 'app-login',

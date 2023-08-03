@@ -1,5 +1,5 @@
 <app-loading *ngIf="isLoad$|async"></app-loading>
-<div class="wrapper">
+<div class="wrapper" *ngIf="!(isLoad$|async)">
   <div class="container">
     <h1>Sign up</h1>
     <a routerLink="../login">Have an account?</a>

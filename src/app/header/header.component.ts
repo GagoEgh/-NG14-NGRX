@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { logedInSelector } from '../shared/helpers/logedin.select';
+import { isLoadSelector } from '../shared/helpers/isLoad.selector';
+import { ICurrentUser } from '../shared/model/currentUser.interface';
+import { currentUserSelect } from '../shared/helpers/currentUser.select';
+import { currentUserDispatch } from '../shared/helpers/currentUserStart.dispatch';
 
 @Component({
   selector: 'app-header',
@@ -9,10 +13,15 @@ import { logedInSelector } from '../shared/helpers/logedin.select';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-
+  isLoad$!: Observable<boolean>;
   logedIn$!: Observable<boolean>;
+  courrentUser$!: Observable<ICurrentUser | null>;
+
   constructor() {
-    this.logedIn$ = logedInSelector()
+    currentUserDispatch();
+    this.logedIn$ = logedInSelector();
+    this.isLoad$ = isLoadSelector();
+    this.courrentUser$ = currentUserSelect()
   }
 
 }

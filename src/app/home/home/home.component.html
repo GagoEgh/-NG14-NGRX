@@ -1,5 +1,5 @@
 
-<div class="banner">
+<div class="banner" *ngIf="!(logedIn$|async)">
   <div class="wrapper">
     <div class="context">
       <h1>conduit</h1>

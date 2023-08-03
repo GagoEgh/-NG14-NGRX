@@ -11,3 +11,7 @@ export const registerError = createAction(AuthType.REGISTER_ERROR, props<IBackEr
 export const loginStart = createAction(AuthType.LOGIN_START, props<IRequestUser>());
 export const loginSuccess = createAction(AuthType.LOGIN_SUCCESS, props<ICurrentUser>());
 export const loginError = createAction(AuthType.LOGIN_ERROR, props<IBackError>());
+
+export const currentUserStart = createAction(AuthType.CURRENT_USER_START);
+export const currentUserSuccess = createAction(AuthType.CURRENT_USER_SUCCESS,props<ICurrentUser>());
+export const currentUserError = createAction(AuthType.CURRENT_USER_ERROR);

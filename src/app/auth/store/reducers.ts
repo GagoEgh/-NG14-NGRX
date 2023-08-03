@@ -1,6 +1,9 @@
 import { createReducer, on } from '@ngrx/store';
 import { IAuthState } from '../model/authState.interface';
 import {
+  currentUserError,
+  currentUserStart,
+  currentUserSuccess,
   loginError,
   loginStart,
   loginSuccess,
@@ -32,7 +35,8 @@ export const authReducer = createReducer(
     ...state,
     isLoad: false,
     logedIn: false,
-    backError: action
+    backError: action,
+    currentUser:null
   })),
   //----------LOGIN--------------
   on(loginStart, (state: IAuthState) => ({ ...state, isLoad: true })),
@@ -48,7 +52,24 @@ export const authReducer = createReducer(
     ...state,
     isLoad: false,
     logedIn: false,
-    backError: action
+    backError: action,
+    currentUser:null
   })),
+
+  // ----------------CURRENT USER-----------------
+  on(currentUserStart, (state: IAuthState) => ({ ...state, isLoad: true, logedIn: false })),
+  on(currentUserSuccess, (state: IAuthState, action) => ({
+    ...state,
+    currentUser: action,
+    isLoad: false,
+    logedIn: true
+  })),
+  on(currentUserError,(state:IAuthState)=>({
+    ...state,
+    isLoad:false,
+    logedIn:false,
+    currentUser:null
+  }))
+
 )
 
