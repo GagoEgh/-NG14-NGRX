@@ -4,7 +4,6 @@ import { RouterLinkWithHref, RouterModule, RouterOutlet } from '@angular/router'
 import { Observable } from 'rxjs';
 import { logedInSelector } from 'src/app/shared/helpers/logedin.select';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

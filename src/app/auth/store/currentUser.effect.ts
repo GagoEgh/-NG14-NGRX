@@ -14,17 +14,21 @@ export class CurrentUserEffect {
     .pipe(
       ofType(currentUserStart),
       switchMap(() => {
-        return this.sharedService.getCurrentUser()
+        const token = localStorage.getItem('accessToken');
+        if(token){
+          return this.sharedService.getCurrentUser()
           .pipe(
             map((response: any) => {
-              const token = localStorage.getItem('accessToken');
-              return token ? currentUserSuccess(response.user) : currentUserError()
-
+              return currentUserSuccess(response.user)
             }),
             catchError(() => {
               return of(currentUserError())
             })
           )
+        }else{
+          return of(currentUserError())
+        }
+        
       })
     )
   )

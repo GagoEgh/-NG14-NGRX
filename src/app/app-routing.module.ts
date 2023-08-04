@@ -3,8 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { RegisterEffect } from './auth/store/register.effect';
 import { AuthService } from './auth/auth.service';
-import { StoreModule } from '@ngrx/store';
-import { authReducer } from './auth/store/reducers';
 import { LoginEffect } from './auth/store/login.effect';
 
 const routes: Routes = [

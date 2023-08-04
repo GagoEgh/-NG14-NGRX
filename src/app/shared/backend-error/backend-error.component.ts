@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { IBackError } from '../model/backendErrore.interface';
-import { LoadingComponent } from '../loading/loading.component';
+
 
 @Component({
   selector: 'app-backend-error',

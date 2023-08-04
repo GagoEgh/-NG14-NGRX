@@ -1,5 +1,7 @@
 import { Routes } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
+import { authGuard } from "./auth.guard";
+import { GlobalFeedService } from "./service/globalFeed.service";
 
 export const HOME_ROUTE: Routes = [
   {
@@ -19,10 +21,12 @@ export const HOME_ROUTE: Routes = [
       },
       {
         path: 'global',
+        providers:[GlobalFeedService],
         loadComponent: () => import('./global/global.component').then((c) => c.GlobalComponent)
       },
       {
         path: 'your',
+        canActivate:[authGuard],
         loadComponent: () => import('./your/your.component').then((c) => c.YourComponent)
       },
       {
