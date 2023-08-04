@@ -1,0 +1,105 @@
+.card{
+  border-bottom: 1px solid #d8d8d8c7;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+
+  .author{
+    display: flex;
+    justify-content:space-between;
+    .author-name{
+      display: flex;
+      width: 145px;
+      justify-content: space-between;
+      img{
+        display: inline-block;
+        vertical-align: middle;
+        height: 32px;
+        width: 32px;
+        border-radius: 30px;
+        align-self: center;
+      }
+      p{
+        color: #5cb85c;
+        margin: 0;
+      }
+
+      span{
+        color: #bbb;
+        font-size: .8rem;
+        display: block;
+        padding-top: 5px;
+      }
+    }
+
+    .favorite{
+     .btn{
+      padding: 4px;
+      font-size: 20px;
+      border-radius: 4px;
+  
+      color: #5cb85c;
+      background-image: none;
+      background-color: transparent;
+      
+      display: inline-block;
+      font-weight: 400;
+      line-height: 1.25;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      user-select: none;
+      border: 1px solid transparent;
+      border-color: #5cb85c;
+
+      .heart{
+        font-size: 16px;
+      }
+     }
+      
+    }
+  }
+
+  .title{
+    cursor: pointer;
+    h1{
+      font-weight: 600;
+    }
+
+    p{
+      font-weight: 300;
+      font-size: 24px;
+      color: #999;
+      margin-bottom: 15px;
+      font-size: 1rem;
+      line-height: 1.3rem;
+    }
+  }
+
+  .read{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0 10px 0;
+    .read-more{
+      font-weight: 300;
+      font-size: .8rem;
+      color: #bbb;
+      cursor: pointer;
+    }
+
+    .tagList{
+      button{
+        font-weight: 300;
+        border: 1px solid #ddd;
+        font-size: .8rem!important;
+        color: #aaa!important;
+        background: 0 0!important;
+        border-radius: 10px;
+        padding: 5px;
+        margin-left: 5px;
+        cursor: pointer;
+      }
+    }
+  }
+
+}

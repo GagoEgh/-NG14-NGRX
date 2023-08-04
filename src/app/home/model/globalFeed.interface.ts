@@ -1,6 +1,6 @@
 import { IAuthor } from "./author.interface";
 
-export interface IGlobalFeed{
+export interface IFeed{
   author:IAuthor,
   body:string,
   createdAt:string,
@@ -12,3 +12,4 @@ export interface IGlobalFeed{
   title:string,
   updatedAt:string
 }
+

@@ -1,6 +1,8 @@
-import { IGlobalFeed } from "./globalFeed.interface";
+
+import { IHomeFeed } from "./homeFeed.interface";
 
 export interface IHomeState{
   isLoad:boolean,
-  globalFeed:null|IGlobalFeed
+  globalFeed:null|IHomeFeed,
+ 
 }

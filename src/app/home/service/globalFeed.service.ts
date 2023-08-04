@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 
-// articles?limit=10&offset=50
+
 @Injectable()
 export class GlobalFeedService {
   private http = inject(HttpClient);
