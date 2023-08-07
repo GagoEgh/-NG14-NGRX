@@ -1,8 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, inject } from '@angular/core';
+import { Component, EnvironmentInjector, Input, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { getActiveRoute } from '../helpers/getActiveRoutes';
 
-
+interface Page {
+  paginations: any[],
+  offset: number,
+}
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
@@ -10,27 +14,55 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [CommonModule]
 })
-export class PaginationComponent {
+export class PaginationComponent implements OnInit {
   private router = inject(Router);
-  pagination = new Array();
+  private injector = inject(EnvironmentInjector);
+  paginations = new Array();
+
+
+  page: Page = {
+    paginations: new Array(),
+    offset: 0,
+  }
+
+  constructor() { this.getActivePaage(); }
+
+  ngOnInit(): void { }
 
   @Input() feed!: string;
   @Input() set counter(value: number | undefined) {
     if (value !== undefined) {
-      this.pagination = new Array(Math.ceil(value / 10))
+      this.page.paginations = new Array(Math.ceil(value / 10))
     }
   }
 
 
   nextPage(num: number) {
-    console.log('feed++++++',this.feed);
-    
-    const offset = num * 10;
+    this.page.offset = num * 10;
+
     this.router.navigate([`home/home/${this.feed}`], {
       queryParams: {
-        offset: offset
+        offset: this.page.offset
       }
+    });
+
+  }
+
+
+  getActivePaage() {
+    this.injector.runInContext(() => {
+      getActiveRoute().subscribe({
+        next: (res) => {
+
+          if (res['offset'] != undefined) {
+            this.page.offset = res['offset']
+          } else {
+            this.page.offset = 0;
+          }
+        }
+      })
     })
+
   }
 
 }

@@ -1,8 +1,7 @@
 
 <div class="pagination">
-  <!-- [ngClass]="{'active':pagination.offset/10+1===i+1}" -->
-  <button class="btn" 
-    *ngFor="let page of pagination,let i=index"
+  <button class="btn" [ngClass]="{'active':page.offset/10===i}"
+    *ngFor="let pages of page.paginations,let i=index"
     (click)="nextPage(i)">
     <div class="btn-block" >
       {{i+1}}

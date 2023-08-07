@@ -1,20 +1,19 @@
 import { EnvironmentInjector, inject } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
 import { yourStartAction } from "./yourStart.action";
+import { getActiveRoute } from "./getActiveRoutes";
 
-export const getYourActiveRoute = ()=>{
-  const activeRouter = inject(ActivatedRoute);
+export const getYourActiveRoute = () => {
   const injector = inject(EnvironmentInjector);
-  
-  activeRouter.queryParams.subscribe({
-    next:(res)=>{
-      injector.runInContext(()=>{
-        if(res['offset']){
+
+  getActiveRoute().subscribe({
+    next: (res) => {
+      injector.runInContext(() => {
+        if (res['offset']) {
           yourStartAction(res['offset']);
-        }else{
+        } else {
           yourStartAction();
         }
       })
     }
-  });
+  })
 }

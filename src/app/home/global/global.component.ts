@@ -6,8 +6,7 @@ import { globalFeedSelect } from '../helpers/globalFeed.select';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { isLoadSelect } from '../helpers/isLoad.select';
 import { HomeService } from '../service/home.service';
-import { getActiveRoute } from '../helpers/getGlobalActiveRoute';
-
+import { getGlobalActiveRoute } from '../helpers/getGlobalActiveRoute';
 
 @Component({
   selector: 'app-global',
@@ -22,8 +21,7 @@ export class GlobalComponent implements OnInit {
   private homeService = inject(HomeService);
   private injector = inject(EnvironmentInjector);
   constructor() {
-
-    getActiveRoute();
+    getGlobalActiveRoute();
     this.globalFeeds$ = globalFeedSelect();
   }
 
