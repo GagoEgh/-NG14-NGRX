@@ -7,6 +7,7 @@ import { StoreModule } from "@ngrx/store";
 import { homeReducer } from "./store/reducers";
 import { EffectsModule } from "@ngrx/effects";
 import { GlobalFeedEffects } from "./store/globalFeed.effect";
+import { YourFeedEffect } from "./store/yourFeed.effects";
 
 export const HOME_ROUTE: Routes = [
   {
@@ -22,7 +23,7 @@ export const HOME_ROUTE: Routes = [
       HomeService ,
       importProvidersFrom(
         StoreModule.forFeature('home', homeReducer),
-        EffectsModule.forFeature([GlobalFeedEffects])
+        EffectsModule.forFeature([GlobalFeedEffects,YourFeedEffect])
       )
     ],
     children: [
@@ -30,13 +31,9 @@ export const HOME_ROUTE: Routes = [
         path: '',
         redirectTo: 'global',
         pathMatch: 'full',
-        providers: [
-          HomeService ,
-          //importProvidersFrom(
-          //  StoreModule.forFeature('home', homeReducer),
-          //  EffectsModule.forFeature([GlobalFeedEffects])
-          //)
-        ],
+        // providers: [
+        //   HomeService ,
+        // ],
       },
       {
         path: 'global',

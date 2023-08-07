@@ -31,5 +31,6 @@
   </div>
 </div>
 <app-pagination 
+  [feed]="'global'"
   [counter]="(globalFeeds$|async)?.articlesCount">
 </app-pagination>
