@@ -1,7 +1,7 @@
 import { Routes } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
 import { authGuard } from "./auth.guard";
-import { GlobalFeedService } from "./service/globalFeed.service";
+import { HomeService  } from "./service/home.service";
 import { importProvidersFrom } from "@angular/core";
 import { StoreModule } from "@ngrx/store";
 import { homeReducer } from "./store/reducers";
@@ -13,22 +13,30 @@ export const HOME_ROUTE: Routes = [
     path: '',
     pathMatch: 'full',
     redirectTo: 'home',
+
   },
   {
     path: 'home',
     component: HomeComponent,
-    providers:[
-      GlobalFeedService,
+    providers: [
+      HomeService ,
       importProvidersFrom(
-        StoreModule.forFeature('home',homeReducer),
+        StoreModule.forFeature('home', homeReducer),
         EffectsModule.forFeature([GlobalFeedEffects])
-        )
+      )
     ],
     children: [
       {
-        path:'',
-        redirectTo:'global',
-        pathMatch:'full',
+        path: '',
+        redirectTo: 'global',
+        pathMatch: 'full',
+        providers: [
+          HomeService ,
+          //importProvidersFrom(
+          //  StoreModule.forFeature('home', homeReducer),
+          //  EffectsModule.forFeature([GlobalFeedEffects])
+          //)
+        ],
       },
       {
         path: 'global',
@@ -36,7 +44,7 @@ export const HOME_ROUTE: Routes = [
       },
       {
         path: 'your',
-        canActivate:[authGuard],
+        canActivate: [authGuard],
         loadComponent: () => import('./your/your.component').then((c) => c.YourComponent)
       },
       {

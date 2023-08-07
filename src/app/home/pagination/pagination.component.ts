@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, EnvironmentInjector, Input, OnInit, inject } from '@angular/core';
-import { globalStart } from '../helpers/globalStart.action';
-import { isLoadSelect } from '../helpers/isLoad.select';
+import { Component, Input, inject } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-pagination',
@@ -10,8 +10,8 @@ import { isLoadSelect } from '../helpers/isLoad.select';
   standalone: true,
   imports: [CommonModule]
 })
-export class PaginationComponent implements OnInit {
-  private injector = inject(EnvironmentInjector)
+export class PaginationComponent{
+  private router = inject(Router);
   pagination = new Array();
 
   @Input() set counter(value: number | undefined) {
@@ -20,13 +20,14 @@ export class PaginationComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void { }
 
   nextPage(num: number) {
-    this.injector.runInContext(() => {
-      globalStart(num * 10);
-      isLoadSelect()
-    })
+    const offset = num*10;
+      this.router.navigate(['home/home/global'],{
+        queryParams:{
+          offset:offset
+        }
+      })
   }
 
 }

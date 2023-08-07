@@ -22,7 +22,6 @@ export class MainInterceptor implements HttpInterceptor {
     if (request.context.get(IS_PUBLIC_API)) {
       headers = headers.set('Authorization', `Token ${token}`);
     }
-
     const cloneRequest = request.clone({
       url: cloneURL,
       headers:headers
