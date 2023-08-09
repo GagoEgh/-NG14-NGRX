@@ -4,6 +4,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { RegisterEffect } from './auth/store/register.effect';
 import { AuthService } from './auth/auth.service';
 import { LoginEffect } from './auth/store/login.effect';
+import { StoreModule } from "@ngrx/store";
+import { articleReducer } from './article/store/reducers';
+import { ArticleEffect } from './article/store/article.effect';
+import { ArticleService } from './article/services/article.service';
 
 const routes: Routes = [
   {
@@ -32,6 +36,17 @@ const routes: Routes = [
       importProvidersFrom(EffectsModule.forFeature([RegisterEffect]))
     ]
 
+  },
+  {
+    path: 'articles',
+    providers: [
+      ArticleService,
+      importProvidersFrom(
+        StoreModule.forFeature('article', articleReducer),
+        EffectsModule.forFeature([ArticleEffect])
+      )
+    ],
+    loadComponent: () => import('./article/article.component').then((c) => c.ArticleComponent)
   }
 ];
 

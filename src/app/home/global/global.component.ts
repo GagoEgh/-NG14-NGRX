@@ -7,12 +7,21 @@ import { PaginationComponent } from '../pagination/pagination.component';
 import { isLoadSelect } from '../helpers/isLoad.select';
 import { HomeService } from '../service/home.service';
 import { getGlobalActiveRoute } from '../helpers/getGlobalActiveRoute';
+import { ArticleComponent } from '../../article/article.component';
+import { RouterLinkWithHref, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-global',
   templateUrl: './global.component.html',
   styleUrls: ['./global.component.scss'],
-  imports: [CommonModule, PaginationComponent],
+  imports: [
+    CommonModule,
+    PaginationComponent,
+    ArticleComponent,
+    RouterOutlet,
+    RouterLinkWithHref,
+    RouterModule,
+  ],
   standalone: true,
 })
 export class GlobalComponent implements OnInit {

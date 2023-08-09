@@ -1,0 +1,71 @@
+<div class="block">
+  <div class=" banner">
+    <div class="wrapper">
+      <h1>{{ articles?.title }}</h1>
+      
+      <div class="author">
+        <div class="author-data">
+          <img class="image" [src]="articles?.author?.image" />
+          <div class="author-name">
+            <p>{{ articles?.author?.username }}</p>
+            <span>{{ articles?.createdAt | date : "MMMM d, y" }}</span>
+          </div>
+        </div>
+        <div class="author-btns">
+          <!--  -->
+          <ng-container *ngIf="!isUser">
+            <button class="btn-follow">&#10010; Follow {{ articles?.author?.username }}</button>
+            <button class="btn-favorite">&#10084; Favorite Article ({{articles?.favoritesCount}})</button>
+          </ng-container>
+          <!---->
+          <ng-container  *ngIf="isUser" >
+            <button class="btn-follow">&#9998; Edit Article</button>
+            <button class="btn-delete">Delete Article</button>
+          </ng-container>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrapper article-body">
+    <p>
+      {{articles?.body}}
+    </p>
+    <button class="tag" *ngFor="let tag of articles?.tagList">
+      {{tag}}
+    </button>
+  </div>
+
+  <!-- *ngIf="token" -->
+  <div class="card" >
+    <div class="author">
+      <div class="author-data">
+        <img class="image" [src]="articles?.author?.image" />
+        <div class="author-name">
+          <p>{{ articles?.author?.username }}</p>
+          <span>{{ articles?.createdAt | date : "MMMM d, y" }}</span>
+        </div>
+      </div>
+      <div class="author-btns">
+        <ng-container *ngIf="!isUser">
+          <button class="btn-follow">&#10010; Follow {{ articles?.author?.username }}</button>
+          <button class="btn-favorite">&#10084; Favorite Article ({{articles?.favoritesCount}})</button>
+        </ng-container>
+        
+        <ng-container *ngIf="isUser">
+          <button class="btn-follow">&#9998; Edit Article</button>
+          <button class="btn-delete">Delete Article</button>
+        </ng-container>
+      </div>
+    </div>
+    <div class="text">
+      <textarea rows="8" cols="70" placeholder="Write a comment..."></textarea>
+      <div class="card-footer">
+        <!-- <img [src]="(currentUser$|async)?.image" width="30px" height="30px"> -->
+        <button class="card-btn">
+          Post Comment
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

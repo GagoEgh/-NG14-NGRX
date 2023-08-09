@@ -1,13 +1,14 @@
 import { Routes } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
 import { authGuard } from "./auth.guard";
-import { HomeService  } from "./service/home.service";
+import { HomeService } from "./service/home.service";
 import { importProvidersFrom } from "@angular/core";
 import { StoreModule } from "@ngrx/store";
 import { homeReducer } from "./store/reducers";
 import { EffectsModule } from "@ngrx/effects";
 import { GlobalFeedEffects } from "./store/globalFeed.effect";
 import { YourFeedEffect } from "./store/yourFeed.effects";
+
 
 export const HOME_ROUTE: Routes = [
   {
@@ -20,10 +21,10 @@ export const HOME_ROUTE: Routes = [
     path: 'home',
     component: HomeComponent,
     providers: [
-      HomeService ,
+      HomeService,
       importProvidersFrom(
         StoreModule.forFeature('home', homeReducer),
-        EffectsModule.forFeature([GlobalFeedEffects,YourFeedEffect])
+        EffectsModule.forFeature([GlobalFeedEffects, YourFeedEffect])
       )
     ],
     children: [
@@ -31,9 +32,6 @@ export const HOME_ROUTE: Routes = [
         path: '',
         redirectTo: 'global',
         pathMatch: 'full',
-        // providers: [
-        //   HomeService ,
-        // ],
       },
       {
         path: 'global',
@@ -47,7 +45,7 @@ export const HOME_ROUTE: Routes = [
       {
         path: 'tag',
         loadComponent: () => import('./tag/tag.component').then((c) => c.TagComponent)
-      }
+      },
     ]
   }
 ]

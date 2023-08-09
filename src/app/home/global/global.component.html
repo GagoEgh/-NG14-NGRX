@@ -1,35 +1,38 @@
-<div class="card" *ngFor="let feed of (globalFeeds$ | async)?.articles">
-  <div class="author">
-    <div class="author-name">
-      <img [src]="feed.author.image" />
-      <div>
-        <p>{{ feed.author.username }}</p>
-        <span>{{ feed.updatedAt | date : "MMMM d, y" }}</span>
+<div class="wrapper">
+  <div class="card" *ngFor="let feed of (globalFeeds$ | async)?.articles">
+    <div class="author">
+      <div class="author-name">
+        <img [src]="feed.author.image" />
+        <div>
+          <p>{{ feed.author.username }}</p>
+          <span>{{ feed.updatedAt | date : "MMMM d, y" }}</span>
+        </div>
+      </div>
+      <div class="favorite">
+        <button class="btn">
+          <span class="heart">&#10084;</span>
+          {{ feed.favoritesCount }}
+        </button>
       </div>
     </div>
-    <div class="favorite">
-      <button class="btn">
-        <span class="heart">&#10084;</span>
-        {{ feed.favoritesCount }}
-      </button>
+    <div class="title" [routerLink]="['../../../articles']" [queryParams]="{slug:feed.slug}">
+      <h1>{{ feed.title }}</h1>
+      <p>{{ feed.description }}</p>
     </div>
-  </div>
-  <!-- <div class="title" [routerLink]="['../../../articles',feed.slug]"> -->
-    <h1>{{ feed.title }}</h1>
-    <p>{{ feed.description }}</p>
-  <!-- </div> -->
-  <div class="read">
-    <div class="read-more">
-      <span>read-more...</span>
-    </div>
-    <div class="tagList">
-      <button 
-       *ngFor="let tagList of feed.tagList">
-        {{tagList}}
-      </button>
+    <div class="read">
+      <div class="read-more">
+        <span>read-more...</span>
+      </div>
+      <div class="tagList">
+        <button 
+         *ngFor="let tagList of feed.tagList">
+          {{tagList}}
+        </button>
+      </div>
     </div>
   </div>
 </div>
+
 <app-pagination 
   [feed]="'global'"
   [counter]="(globalFeeds$|async)?.articlesCount">
