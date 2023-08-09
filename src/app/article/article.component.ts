@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { IArticle } from './model/article.interface';
 import { getActiveSlug } from './helpers/getActiveSlug';
 import { getArticleSelect } from './helpers/getArticle.select';
 import { currentUserSelect } from '../shared/helpers/currentUser.select';
-import { combineLatest } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
+import { getIsLoadSelect } from './helpers/getIsLoad.select';
+import { LoadingComponent } from '../shared/loading/loading.component';
+import { IFeed } from '../home/model/globalFeed.interface';
 
 
 @Component({
@@ -12,16 +14,18 @@ import { combineLatest } from 'rxjs';
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.scss'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule,LoadingComponent]
 })
 export class ArticleComponent implements OnInit {
 
-  articles!: IArticle | null;
+  articles!: IFeed | null;
   isUser = false;
+  isLoad$!:Observable<boolean>;
  
   constructor() {
     getActiveSlug();
     this.getUserAndArticle();
+    this.isLoad$ = getIsLoadSelect()
   }
 
   private getUserAndArticle() {

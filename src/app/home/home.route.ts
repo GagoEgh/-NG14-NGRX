@@ -8,6 +8,8 @@ import { homeReducer } from "./store/reducers";
 import { EffectsModule } from "@ngrx/effects";
 import { GlobalFeedEffects } from "./store/globalFeed.effect";
 import { YourFeedEffect } from "./store/yourFeed.effects";
+import { PopularTagsEffect } from "./store/popularTages.effect";
+import { TagEffect } from "./store/tag.effect";
 
 
 export const HOME_ROUTE: Routes = [
@@ -24,7 +26,7 @@ export const HOME_ROUTE: Routes = [
       HomeService,
       importProvidersFrom(
         StoreModule.forFeature('home', homeReducer),
-        EffectsModule.forFeature([GlobalFeedEffects, YourFeedEffect])
+        EffectsModule.forFeature([GlobalFeedEffects, YourFeedEffect,PopularTagsEffect,TagEffect])
       )
     ],
     children: [

@@ -18,8 +18,6 @@ export class PaginationComponent implements OnInit {
   private router = inject(Router);
   private injector = inject(EnvironmentInjector);
   paginations = new Array();
-
-
   page: Page = {
     paginations: new Array(),
     offset: 0,
@@ -42,8 +40,10 @@ export class PaginationComponent implements OnInit {
 
     this.router.navigate([`home/home/${this.feed}`], {
       queryParams: {
-        offset: this.page.offset
-      }
+        offset: this.page.offset,
+        
+      },
+      queryParamsHandling :"merge"
     });
 
   }

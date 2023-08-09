@@ -1,4 +1,6 @@
-<div class="block">
+<app-loading *ngIf="isLoad$|async"></app-loading>
+
+<div class="block" *ngIf="!(isLoad$|async)">
   <div class=" banner">
     <div class="wrapper">
       <h1>{{ articles?.title }}</h1>
@@ -12,12 +14,10 @@
           </div>
         </div>
         <div class="author-btns">
-          <!--  -->
           <ng-container *ngIf="!isUser">
             <button class="btn-follow">&#10010; Follow {{ articles?.author?.username }}</button>
             <button class="btn-favorite">&#10084; Favorite Article ({{articles?.favoritesCount}})</button>
           </ng-container>
-          <!---->
           <ng-container  *ngIf="isUser" >
             <button class="btn-follow">&#9998; Edit Article</button>
             <button class="btn-delete">Delete Article</button>

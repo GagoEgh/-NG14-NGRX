@@ -2,7 +2,7 @@
   <ng-container *ngIf="(yourFeed$ |async)?.articlesCount==0">
     No articles are here... yet.
   </ng-container>
-  <div class="card" *ngFor="let feed of (yourFeed$ |async)?.articles">
+  <div class="card feed" *ngFor="let feed of (yourFeed$ |async)?.articles">
     <div class="author">
       <div class="author-name">
         <img [src]="feed.author.image">

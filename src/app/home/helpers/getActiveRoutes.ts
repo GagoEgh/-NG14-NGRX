@@ -8,5 +8,4 @@ export const getActiveRoute = () => {
     .pipe(map((res) => {
       return res
     }))
-
 }

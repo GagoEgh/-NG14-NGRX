@@ -1,8 +1,9 @@
-import { IArticle } from "./article.interface";
+
+import { IFeed } from "src/app/home/model/globalFeed.interface";
 import { IComments } from "./comments.interface";
 
 export interface IArticleState{
   isLoad:boolean,
-  article:null|IArticle,
+  article:null|IFeed,
   comments:IComments|null
 }

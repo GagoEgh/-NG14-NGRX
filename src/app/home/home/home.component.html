@@ -18,16 +18,27 @@
       
       <a routerLink="global" 
         [routerLinkActive]="'active'"
-        ariaCurrentWhenActive="page">
+        ariaCurrentWhenActive="page"
+        >
         Global feed
       </a>
-      <a  
+      <a  *ngIf="isTag$|async"
         class="active"
         ng-href="#"
         >
-       tag
+       {{activeTag}}
       </a>
       <hr>
+    </div>
+    <div class="tags" >
+      <p>Popular tags</p>
+      <span  class="span"  
+        routerLink="tag"
+        ariaCurrentWhenActive="page"
+        [queryParams]="{tag:tag,offset:0}"
+        *ngFor="let tag of tags$|async" >
+        {{tag}}
+      </span>
     </div>
   </div>
  

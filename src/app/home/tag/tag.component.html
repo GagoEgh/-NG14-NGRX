@@ -1,1 +1,39 @@
-<p>tag works!</p>
+<app-loading *ngIf="isLoad$|async"></app-loading>
+<div class="wrapper ">
+  <div class="card feed" *ngFor="let feed of (tag$|async)?.articles">
+    <div class="author">
+      <div class="author-name">
+        <img [src]="feed.author.image">
+        <div>
+          <p>{{feed.author.username}}</p>
+          <span>{{feed.updatedAt|date:'MMMM d, y'}}</span>
+        </div>
+      </div>
+      <div class="favorite">
+        <button class="btn">
+          <span class="heart">&#10084;</span>
+          {{feed.favoritesCount}}</button>  
+      </div>
+    </div>
+    <!-- [routerLink]="['../../../articles',feed.slug]" -->
+    <div class="title"  >
+      <h1>{{feed.title}}</h1>
+      <p>{{feed.description}}</p>
+    </div>
+    <div class="read">
+      <div class="read-more">
+        <span>read-more...</span>
+      </div>
+      <div class="tagList">
+        <button 
+        *ngFor="let tagList of feed.tagList">
+          {{tagList}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-pagination 
+  [feed]="'tag'"
+  [counter]="(tag$|async)?.articlesCount">
+</app-pagination>

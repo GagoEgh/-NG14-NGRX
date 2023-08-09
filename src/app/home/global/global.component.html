@@ -1,5 +1,5 @@
-<div class="wrapper">
-  <div class="card" *ngFor="let feed of (globalFeeds$ | async)?.articles">
+<div class="wrapper ">
+  <div class="card feed" *ngFor="let feed of (globalFeeds$ | async)?.articles">
     <div class="author">
       <div class="author-name">
         <img [src]="feed.author.image" />

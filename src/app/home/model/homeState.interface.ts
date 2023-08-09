@@ -1,10 +1,10 @@
-
-import { IArticle } from "../../article/model/article.interface";
 import { IHomeFeed } from "./homeFeed.interface";
 
 export interface IHomeState {
   isLoad: boolean,
   globalFeed: null | IHomeFeed,
   yourFeed: null | IHomeFeed,
-  article: null | IArticle
+  tag: null | IHomeFeed,
+  popularTags: null | string[],
+  isTag: boolean
 }
