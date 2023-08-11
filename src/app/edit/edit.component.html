@@ -1,5 +1,6 @@
 <app-loading *ngIf="isLoad$|async"></app-loading>
 <div class="wrapper">
+  <app-backend-error [backendErrore]="backendErrore$|async"></app-backend-error>
   <!-- <app-backend-errore class="error" [backendErrore]="backendErrore$|async">
   </app-backend-errore> -->
   <form class="form" [formGroup]="articleForm" (ngSubmit)="publishArticle()">

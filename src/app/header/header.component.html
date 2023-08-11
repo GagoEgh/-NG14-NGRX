@@ -17,7 +17,7 @@
       </ng-container>
       <ng-container *ngIf="logedIn$|async">
         <a routerLink="edit" routerLinkActive="active" ariaCurrentWhenActive="page"> &#9998;New Article</a>
-        <a><i class="fa fa-cog"></i>&nbsp;Settings </a>
+        <a><i class="fa fa-cog mg"></i>&nbsp;Settings </a>
         <a><span class="smile">&#9786; </span>{{(courrentUser$|async)?.username}}</a>
       </ng-container>
     </div>
