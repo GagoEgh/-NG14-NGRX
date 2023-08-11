@@ -9,19 +9,20 @@ import { getTagSelector } from '../helpers/getTag.selector';
 import { tagIsLoad } from '../helpers/tagIsLoad.selector';
 import { tagStartActions } from '../helpers/tagStart.action';
 import { PaginationComponent } from '../pagination/pagination.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-tag',
   templateUrl: './tag.component.html',
   styleUrls: ['../global/global.component.scss'],
   standalone: true,
-  imports: [CommonModule, LoadingComponent,PaginationComponent]
+  imports: [CommonModule, LoadingComponent,PaginationComponent,RouterModule,]
 })
 export class TagComponent {
   tag$!: Observable<null | IHomeFeed>
   isLoad$!: Observable<boolean>;
   private injector = inject(EnvironmentInjector);
-  data!:{tag:string,offset:string}
+
   constructor() {
     this.getActiveTag();
     this.tag$ = getTagSelector(); 
@@ -32,13 +33,13 @@ export class TagComponent {
   private getActiveTag() {
     getActiveRoute().subscribe({
       next: (res) => {
-        this.data = {
+        const data = {
           offset: res['offset'],
           tag: res['tag']
         }
 
         this.injector.runInContext(()=>{
-          tagStartActions(this.data);
+          tagStartActions(data);
         })
       }
     })

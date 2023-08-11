@@ -8,6 +8,9 @@ import { StoreModule } from "@ngrx/store";
 import { articleReducer } from './article/store/reducers';
 import { ArticleEffect } from './article/store/article.effect';
 import { ArticleService } from './article/services/article.service';
+import { EditService } from './edit/edit.service';
+import { editReducers } from './edit/store/reducers';
+import { EditEffect } from './edit/store/edit.effect';
 
 const routes: Routes = [
   {
@@ -47,6 +50,17 @@ const routes: Routes = [
       )
     ],
     loadComponent: () => import('./article/article.component').then((c) => c.ArticleComponent)
+  },
+  {
+    path: 'edit',
+    providers: [
+      EditService,
+      importProvidersFrom(
+        StoreModule.forFeature('edit', editReducers),
+        EffectsModule.forFeature([EditEffect])
+      )
+    ],
+    loadComponent: () => import('./edit/edit.component').then((c) => c.EditComponent)
   }
 ];
 

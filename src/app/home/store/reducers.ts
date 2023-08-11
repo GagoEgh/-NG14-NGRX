@@ -30,7 +30,7 @@ export const homeReducer = createReducer(
   on(globalStartAction, (state: IHomeState) => ({ ...state, isLoad: true })),
   on(globalSuccesActon, (state: IHomeState, action) => ({ ...state, isLoad: false, globalFeed: action.feed })),
   on(globalErrorActon, (state: IHomeState) => ({ ...state, isLoad: false, globalFeed: null })),
-  on(routerNavigatedAction, (state: IHomeState) => ({ ...state, globalFeed: null, yourFeed: null, article: null,isTag:false})),
+  on(routerNavigatedAction, (state: IHomeState) => ({ ...state, globalFeed: null, yourFeed: null, article: null,isTag:false,tag:null})),
   // ------- YOUR FEED -----------------
   on(yourStatrtAction, (state: IHomeState) => ({ ...state, isLoad: true })),
   on(yourSuccessAction, (state: IHomeState, action) => ({ ...state, isLoad: false, yourFeed: action })),

@@ -34,7 +34,6 @@ export class HomeService {
 
 
   getTag(data:any):Observable<IHomeFeed>{
-    // tag:string,offset:number=0
    return this.http.get<IHomeFeed>(`articles?tag=${data.tag}&limit=10&offset=${data.offset}`)
   }
 

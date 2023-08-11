@@ -1,0 +1,50 @@
+.wrapper{
+  padding: 50px;
+  .form{
+    display: flex;
+    flex-direction: column;
+    
+    .text, .area{
+      font-size: 18px;
+      color:rgb(73 70 70 / 30%);
+      padding: 15px;
+      letter-spacing: 0.3px;
+    }
+
+    .text{
+      margin: 10px;
+      border-radius: 5px;
+      border: 1px solid #c6c5c5a6;
+    }
+
+    .area{
+      border-radius: 5px;
+      border: 1px solid #c6c5c5a6;
+      margin-left: 5px;
+      width: 99%;
+    }
+
+    .btn-article{
+      width: 180px;
+      color: #fff;
+      background-color: #5cb85c;
+      border-color: #5cb85c;
+      padding: 13px;
+      align-self: flex-end;
+      font-size: 20px;
+      letter-spacing: 1px;
+      cursor: pointer;
+
+      &:active{
+        color: #fff;
+        background-color: #449d44;
+        border-color: #419641;
+      }
+    }
+  }
+
+  .error{
+   display: flex;
+   justify-content: center;
+  }
+}

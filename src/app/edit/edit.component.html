@@ -1,0 +1,17 @@
+<app-loading *ngIf="isLoad$|async"></app-loading>
+<div class="wrapper">
+  <!-- <app-backend-errore class="error" [backendErrore]="backendErrore$|async">
+  </app-backend-errore> -->
+  <form class="form" [formGroup]="articleForm" (ngSubmit)="publishArticle()">
+    <input type="text" formControlName="title"
+      class="text" placeholder="Article Title">
+    <input type="text" formControlName="description"
+      class="text" placeholder="What's this article about?">
+    <textarea cols="3" rows="7" formControlName="body"
+       class="area" placeholder="Write your article(in markdown)"></textarea>
+    <input type="text" formControlName="tagList"
+      class="text" placeholder="enter tags">
+    <button class="btn-article">Publish Article</button>
+  </form>
+</div>
+

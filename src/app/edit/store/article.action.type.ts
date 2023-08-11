@@ -1,0 +1,5 @@
+export enum EditActionType{
+  EDIT_START = '[EDIT] EDIT_START',
+  EDIT_SUCCESS = '[EDIT] EDIT_SUCCES',
+  EDIT_ERROR = '[EDIT] EDIT_ERROR',
+}

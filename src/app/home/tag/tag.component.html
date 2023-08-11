@@ -16,7 +16,7 @@
       </div>
     </div>
     <!-- [routerLink]="['../../../articles',feed.slug]" -->
-    <div class="title"  >
+    <div class="title"  [routerLink]="['../../../articles']" [queryParams]="{slug:feed.slug}">
       <h1>{{feed.title}}</h1>
       <p>{{feed.description}}</p>
     </div>

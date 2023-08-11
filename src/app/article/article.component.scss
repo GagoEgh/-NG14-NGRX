@@ -85,6 +85,8 @@
     }
 
     .author-btns{
+      display: flex;
+      align-items: center;
       align-self: center;
 
       .btn-follow{
@@ -125,7 +127,7 @@
         background-color: transparent;
         border-color:rgba(224, 96, 73, 0.829);
         border: 1px solid rgba(224, 96, 73, 0.829);
-        padding: 7px;
+        padding: 6px;
         cursor: pointer;
         transition: all 0.1s;
         &:hover{
@@ -142,3 +144,4 @@
     padding-top: 50px;
   }
 }
+
