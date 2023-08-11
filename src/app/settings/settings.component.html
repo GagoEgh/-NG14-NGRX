@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <!-- <app-backend-error [backendErrore]="backendErrore$|async"></app-backend-error> -->
+  <form class="form" [formGroup]="settingsForm" (ngSubmit)="updateData()">
+    <input type="text" formControlName="url" class="text"> 
+    <input type="text" formControlName="name"  class="text" >
+    <textarea cols="3" rows="7" formControlName="aboutYou"
+       class="area" placeholder="Short bio about you"></textarea>
+    <input type="email" formControlName="email" class="text" >
+    <input type="password" formControlName="newPassword" class="text" placeholder="New Password">
+    <p class="error" *ngIf="settingsForm.status=== 'INVALID'">fill in the input</p>
+    <button class="btn-article">Update Settings</button>
+  
+    <button class="logout" (click)="logout()">Or click here to logout</button>
+  </form>
+  
+</div>

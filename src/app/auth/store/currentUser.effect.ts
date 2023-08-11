@@ -19,6 +19,7 @@ export class CurrentUserEffect {
           return this.sharedService.getCurrentUser()
           .pipe(
             map((response: any) => {
+              console.log('get user',response)
               return currentUserSuccess(response.user)
             }),
             catchError(() => {

@@ -1,0 +1,70 @@
+.wrapper{
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  .form{
+    display: flex;
+    flex-direction: column;
+    width: 590px;
+    .text, .area{
+      font-size: 18px;
+      color:rgb(73 70 70 / 80%);
+      padding: 15px;
+      letter-spacing: 0.3px;
+    }
+
+    .text{
+      margin: 10px;
+      border-radius: 5px;
+      border: 1px solid #c6c5c5a6;
+    }
+
+    .area{
+      border-radius: 5px;
+      border: 1px solid #c6c5c5a6;
+      margin-left: 5px;
+      width: 98%;
+    }
+
+    .btn-article{
+      width: 180px;
+      color: #fff;
+      background-color: #5cb85c;
+      border-color: #5cb85c;
+      padding: 10px;
+      align-self: flex-end;
+      font-size: 20px;
+      letter-spacing: 1px;
+      cursor: pointer;
+
+      &:active{
+        color: #fff;
+        background-color: #449d44;
+        border-color: #419641;
+      }
+    }
+  }
+}
+
+.error{
+  color: tomato;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.logout{
+  border: 1px solid #b85c5c;
+  padding: 15px;
+  width: 210px;
+  background: inherit;
+  color: #b85c5c;
+  letter-spacing: 1px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.1s;
+  &:hover{
+    background-color:#b85c5c;
+    color: white;
+  }
+}

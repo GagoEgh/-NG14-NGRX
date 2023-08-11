@@ -11,6 +11,9 @@ import { ArticleService } from './article/services/article.service';
 import { EditService } from './edit/edit.service';
 import { editReducers } from './edit/store/reducers';
 import { EditEffect } from './edit/store/edit.effect';
+import { SettingsService } from './settings/settings.service';
+import { settingsReducers } from './settings/store/setting.reducers';
+import { SettingsEffect } from './settings/store/settings.effect';
 
 const routes: Routes = [
   {
@@ -61,6 +64,17 @@ const routes: Routes = [
       )
     ],
     loadComponent: () => import('./edit/edit.component').then((c) => c.EditComponent)
+  },
+  {
+    path:'settings',
+    providers: [
+      SettingsService,
+      importProvidersFrom(
+        StoreModule.forFeature('settings', settingsReducers),
+        EffectsModule.forFeature([SettingsEffect])
+      )
+    ],
+    loadComponent:()=>import('./settings/settings.component').then((c)=>c.SettingsComponent)
   }
 ];
 
